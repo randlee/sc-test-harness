@@ -1,0 +1,70 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 scripts/log-hook.py --event PreToolUse"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 scripts/log-hook.py --event PostToolUse"
+          }
+        ]
+      }
+    ],
+    "PreTask": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 scripts/log-hook.py --event PreTask"
+          }
+        ]
+      }
+    ],
+    "PostTask": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 scripts/log-hook.py --event PostTask"
+          }
+        ]
+      }
+    ],
+    "PreCommand": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 scripts/log-hook.py --event PreCommand"
+          }
+        ]
+      }
+    ],
+    "PostCommand": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 scripts/log-hook.py --event PostCommand"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+startup-prompt: pm/ARCH-SC.md
+check-list: pm/checklist.md
+worktree-scan: scan
+pr-enabled: false
+worktree-enabled: false
