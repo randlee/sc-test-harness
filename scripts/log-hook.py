@@ -17,7 +17,12 @@ def main() -> int:
     args = ap.parse_args()
 
     ts = datetime.utcnow().isoformat(timespec="seconds") + "Z"
-    stdin = sys.stdin.read()
+    stdin_raw = sys.stdin.read().strip()
+    # Parse stdin as JSON if possible, otherwise keep as string
+    try:
+        stdin = json.loads(stdin_raw) if stdin_raw else {}
+    except json.JSONDecodeError:
+        stdin = stdin_raw
     env_keys = [
         "CLAUDE_AGENT_ID",
         "CLAUDE_AGENT_TASK",
@@ -29,7 +34,7 @@ def main() -> int:
         "ts": ts,
         "event": args.event,
         "cwd": os.getcwd(),
-        "stdin": stdin.strip(),
+        "stdin": stdin,
         "env": env,
         "pid": os.getpid(),
         "ppid": os.getppid(),
