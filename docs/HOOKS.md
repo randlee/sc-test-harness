@@ -11,10 +11,6 @@ Plugin hooks live in a plugin root at `hooks/hooks.json`.
 Current events wired:
 - `PreToolUse`
 - `PostToolUse`
-- `PreTask`
-- `PostTask`
-- `PreCommand`
-- `PostCommand`
 
 Each hook runs:
 

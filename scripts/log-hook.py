@@ -18,11 +18,19 @@ def main() -> int:
 
     ts = datetime.utcnow().isoformat(timespec="seconds") + "Z"
     stdin = sys.stdin.read()
+    env_keys = [
+        "CLAUDE_AGENT_ID",
+        "CLAUDE_AGENT_TASK",
+        "CLAUDE_AGENT_STATUS",
+        "CLAUDE_FILE_PATHS",
+    ]
+    env = {key: os.environ.get(key) for key in env_keys if os.environ.get(key)}
     record = {
         "ts": ts,
         "event": args.event,
         "cwd": os.getcwd(),
         "stdin": stdin.strip(),
+        "env": env,
     }
 
     log_path = Path(args.log)
