@@ -1,0 +1,25 @@
+agents:
+  sc-checklist-status:
+    path: .claude/agents/sc-checklist-status.md
+    version: 0.7.0
+  sc-package-docs:
+    path: .claude/agents/sc-package-docs.md
+    version: 0.7.0
+  sc-package-install:
+    path: .claude/agents/sc-package-install.md
+    version: 0.7.0
+  sc-package-uninstall:
+    path: .claude/agents/sc-package-uninstall.md
+    version: 0.7.0
+  sc-packages-list:
+    path: .claude/agents/sc-packages-list.md
+    version: 0.7.0
+  sc-startup-init:
+    path: .claude/agents/sc-startup-init.md
+    version: 0.7.0
+  sc_checklist_status:
+    path: .claude/agents/sc_checklist_status.py
+    version: 0.7.0
+  sc_startup_init:
+    path: .claude/agents/sc_startup_init.py
+    version: 0.7.0
