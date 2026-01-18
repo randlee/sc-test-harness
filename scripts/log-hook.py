@@ -31,6 +31,8 @@ def main() -> int:
         "cwd": os.getcwd(),
         "stdin": stdin.strip(),
         "env": env,
+        "pid": os.getpid(),
+        "ppid": os.getppid(),
     }
 
     log_path = Path(args.log)
