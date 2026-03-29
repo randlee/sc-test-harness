@@ -4,26 +4,35 @@
 **Author**: Agent (Spike Investigation)
 **Status**: Complete
 
+> Historical note:
+> This spike remains useful for original exploration context, but some wire facts
+> have changed or been expanded by later captures. In particular:
+> - newer captures now observe `SessionStart.source` values beyond `startup`
+> - newer agent/teammate spawn captures use `tool_name = "Agent"` rather than the
+>   older `Task` example below
+> - the current repo baseline config does not wire every possible hook surface
+>   (for example `PreCompact` is still unwired here)
+
 ## Executive Summary
 
 This spike investigated what Claude hook events capture and whether we can observe everything needed for testing. The findings are **highly positive** - hooks provide comprehensive observability of tool invocations, inputs, outputs, skill calls, and subagent lifecycles. However, there are some gaps that require attention.
 
 ## Current Hook Configuration
 
-The test harness has hooks configured for all available event types:
+The current baseline harness config wires these event types:
 
 | Event Type | Matcher | Handler |
 |------------|---------|---------|
 | SessionStart | `.*` | `python3 scripts/log-hook.py --event SessionStart` |
 | SessionEnd | `.*` | `python3 scripts/log-hook.py --event SessionEnd` |
 | UserPromptSubmit | `.*` | `python3 scripts/log-hook.py --event UserPromptSubmit` |
-| PreToolUse | `.*` | `python3 scripts/log-hook.py --event PreToolUse` |
-| PostToolUse | `.*` | `python3 scripts/log-hook.py --event PostToolUse` |
+| Notification | `.*` | `python3 scripts/log-hook.py --event Notification` |
+| Stop | `.*` | `python3 scripts/log-hook.py --event Stop` |
 | SubagentStart | `.*` | `python3 scripts/log-hook.py --event SubagentStart` |
 | SubagentStop | `.*` | `python3 scripts/log-hook.py --event SubagentStop` |
-| Stop | `.*` | `python3 scripts/log-hook.py --event Stop` |
-| Notification | `.*` | `python3 scripts/log-hook.py --event Notification` |
 | PermissionRequest | `.*` | `python3 scripts/log-hook.py --event PermissionRequest` |
+| PreToolUse | `.*` | `python3 scripts/log-hook.py --event PreToolUse` |
+| PostToolUse | `.*` | `python3 scripts/log-hook.py --event PostToolUse` |
 
 ---
 
@@ -128,7 +137,7 @@ The test harness has hooks configured for all available event types:
 }
 ```
 
-**Example (Task - Subagent)**:
+**Historical Example (Task - Subagent)**:
 ```json
 {
   "tool_name": "Task",
@@ -140,6 +149,10 @@ The test harness has hooks configured for all available event types:
   "tool_use_id": "toolu_01WuwM3F8GEL3MzNS8Zzz4PK"
 }
 ```
+
+Later captures in newer harness work should be consulted for current
+agent/teammate spawn naming. This example is preserved as a historical observed
+shape from the original spike.
 
 ### 4. PostToolUse
 
