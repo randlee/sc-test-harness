@@ -52,6 +52,18 @@ Events are logged to `reports/trace.jsonl` as JSONL records.
 
 See [spike-2-hook-observability.md](docs/spike-2-hook-observability.md) for event schemas and coverage analysis.
 
+### Codex Parity
+
+Fixtures can also target OpenAI Codex models (`luna`/`sol`/`terra`, i.e.
+`gpt-5.6-*`) via `codex exec` instead of `claude -p`, with equivalent
+isolation (`CODEX_HOME` alongside `HOME`) and tracing — Codex has no hook
+system, so its `--json` event stream is captured as
+`reports/{test_id}-codex-events.jsonl` and stands in for `trace.jsonl`.
+Codex also has no `Skill` tool, so the harness writes an `AGENTS.md`
+pointing at installed skills before invoking it. See
+[CODEX.md](docs/CODEX.md) for the full equivalence model, including the
+`ZDOTDIR` mechanism needed to keep Codex's login-shell PATH under control.
+
 ---
 
 ## Layout
@@ -137,6 +149,7 @@ The test harness:
 | [spike-2-hook-observability.md](docs/spike-2-hook-observability.md) | Hook event schemas and coverage |
 | [HOOKS.md](docs/HOOKS.md) | Hook configuration reference |
 | [TRACE.md](docs/TRACE.md) | Trace JSONL format specification |
+| [CODEX.md](docs/CODEX.md) | Codex model parity: no-hooks/JSONL-as-trace, CODEX_HOME, ZDOTDIR, AGENTS.md |
 
 ---
 
