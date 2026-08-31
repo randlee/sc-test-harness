@@ -1,2 +1,5 @@
 reports/
 .claude/state/
+
+# local credentials (sourced by harness invocations; never committed)
+.env
