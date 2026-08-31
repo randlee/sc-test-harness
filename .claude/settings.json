@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 scripts/log-hook.py --event SessionStart"
+            "command": "python3 \"${CLAUDE_PROJECT_DIR}/scripts/log-hook.py\" --event SessionStart"
           }
         ]
       }
@@ -17,7 +17,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 scripts/log-hook.py --event SessionEnd"
+            "command": "python3 \"${CLAUDE_PROJECT_DIR}/scripts/log-hook.py\" --event SessionEnd"
           }
         ]
       }
@@ -28,7 +28,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 scripts/log-hook.py --event UserPromptSubmit"
+            "command": "python3 \"${CLAUDE_PROJECT_DIR}/scripts/log-hook.py\" --event UserPromptSubmit"
           }
         ]
       }
@@ -39,7 +39,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 scripts/log-hook.py --event Notification"
+            "command": "python3 \"${CLAUDE_PROJECT_DIR}/scripts/log-hook.py\" --event Notification"
           }
         ]
       }
@@ -50,7 +50,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 scripts/log-hook.py --event Stop"
+            "command": "python3 \"${CLAUDE_PROJECT_DIR}/scripts/log-hook.py\" --event Stop"
           }
         ]
       }
@@ -61,7 +61,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 scripts/log-hook.py --event SubagentStop"
+            "command": "python3 \"${CLAUDE_PROJECT_DIR}/scripts/log-hook.py\" --event SubagentStop"
           }
         ]
       }
@@ -72,7 +72,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 scripts/log-hook.py --event SubagentStart"
+            "command": "python3 \"${CLAUDE_PROJECT_DIR}/scripts/log-hook.py\" --event SubagentStart"
           }
         ]
       }
@@ -83,7 +83,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 scripts/log-hook.py --event PermissionRequest"
+            "command": "python3 \"${CLAUDE_PROJECT_DIR}/scripts/log-hook.py\" --event PermissionRequest"
           }
         ]
       }
@@ -94,7 +94,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 scripts/log-hook.py --event PreToolUse"
+            "command": "python3 \"${CLAUDE_PROJECT_DIR}/scripts/log-hook.py\" --event PreToolUse"
           }
         ]
       }
@@ -105,7 +105,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 scripts/log-hook.py --event PostToolUse"
+            "command": "python3 \"${CLAUDE_PROJECT_DIR}/scripts/log-hook.py\" --event PostToolUse"
           }
         ]
       }
@@ -113,5 +113,8 @@
   },
   "enabledPlugins": {
     "sc-startup@synaptic-canvas": true
+  },
+  "env": {
+    "PATH": "/Users/randlee/Documents/github/sc-test-harness/bin:/Users/randlee/Documents/github/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
   }
 }
